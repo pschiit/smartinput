@@ -18,9 +18,7 @@ class AppViewModel(
         }
 
         override fun onFinish() {
-            _uiState.update {  currentState ->
-                currentState.copy(inputText ="")
-            }
+            clearInputText()
         }
     }
 
@@ -30,8 +28,19 @@ class AppViewModel(
         _uiState.update { currentState ->
             currentState.copy(inputText = inputText)
         }
-        _inputTextTimer.cancel()
+        if(inputText.length > 1){
+            _inputTextTimer.cancel()
+        }
         _inputTextTimer.start()
+    }
+
+    fun clearInputText(){
+        _uiState.update {  currentState ->
+            if(currentState.inputText.isEmpty().not()){
+                _inputTextTimer.cancel()
+            }
+            currentState.copy(inputText = "")
+        }
     }
 
     fun updateHostName(hostName: String){
@@ -41,6 +50,15 @@ class AppViewModel(
     }
 
     fun toggleKeyboard(){
+        clearInputText()
         _inputMethodManager?.toggleSoftInput(0,0)
+    }
+
+    fun toggleDevicesDialog(){
+        clearInputText()
+        _uiState.update { currentState ->
+            currentState.copy(
+                showDevicesDialog = !currentState.showDevicesDialog)
+        }
     }
 }

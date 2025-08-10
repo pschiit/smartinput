@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">smartinput</string>
+    <string name="app_name">SmartInput</string>
     <string name="no_host_connected">No host connected</string>
     <string name="keyboard_icon">Keyboard icon</string>
     <string name="menu_icon">Menu icon</string>
     <string name="mouse_icon">Mouse icon</string>
     <string name="bluetooth_disabled_icon">Bluetooth disabled icon</string>
+    <string name="link_off_icon">Link off icon</string>
+    <string name="devices_dialog_title">Devices</string>
 </resources>
